@@ -23,12 +23,12 @@ class Transaction
 {
     use InteractsWithWebpayApi;
 
-    const ENDPOINT_CREATE = 'rswebpaytransaction/api/webpay/v1.2/transactions';
-    const ENDPOINT_INSTALLMENTS = 'rswebpaytransaction/api/webpay/v1.2/transactions/{token}/installments';
-    const ENDPOINT_COMMIT = 'rswebpaytransaction/api/webpay/v1.2/transactions/{token}';
-    const ENDPOINT_REFUND = 'rswebpaytransaction/api/webpay/v1.2/transactions/{token}/refunds';
-    const ENDPOINT_STATUS = 'rswebpaytransaction/api/webpay/v1.2/transactions/{token}';
-    const ENDPOINT_CAPTURE = 'rswebpaytransaction/api/webpay/v1.2/transactions/{token}/capture';
+    const ENDPOINT_CREATE = 'rswebpaytransaction/api/webpay/v1.3/transactions';
+    const ENDPOINT_INSTALLMENTS = 'rswebpaytransaction/api/webpay/v1.3/transactions/{token}/installments';
+    const ENDPOINT_COMMIT = 'rswebpaytransaction/api/webpay/v1.3/transactions/{token}';
+    const ENDPOINT_REFUND = 'rswebpaytransaction/api/webpay/v1.3/transactions/{token}/refunds';
+    const ENDPOINT_STATUS = 'rswebpaytransaction/api/webpay/v1.3/transactions/{token}';
+    const ENDPOINT_CAPTURE = 'rswebpaytransaction/api/webpay/v1.3/transactions/{token}/capture';
 
     /**
      * @param $buyOrder
@@ -47,16 +47,16 @@ class Transaction
         $buyOrder,
         $sessionId,
         $amount,
-        $cvv,
         $cardNumber,
+        $cvv,
         $cardExpirationDate
     ) {
         $payload = [
             'buy_order'            => $buyOrder,
             'session_id'           => $sessionId,
             'amount'               => $amount,
-            'cvv'                  => $cvv,
             'card_number'          => $cardNumber,
+            'cvv'                  => $cvv,
             'card_expiration_date' => $cardExpirationDate,
         ];
 
@@ -65,7 +65,6 @@ class Transaction
         } catch (WebpayRequestException $exception) {
             throw TransactionCreateException::raise($exception);
         }
-
         return new TransactionCreateResponse($response);
     }
 
