@@ -65,6 +65,7 @@ class Transaction
         } catch (WebpayRequestException $exception) {
             throw TransactionCreateException::raise($exception);
         }
+
         return new TransactionCreateResponse($response);
     }
 
