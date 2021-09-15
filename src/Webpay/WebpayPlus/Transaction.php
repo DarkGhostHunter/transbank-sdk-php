@@ -3,7 +3,15 @@
 namespace Transbank\Webpay\WebpayPlus;
 
 use GuzzleHttp\Exception\GuzzleException;
+use Transbank\Common\Responses\DeferredCaptureHistoryResponse;
+use Transbank\Common\Responses\IncreaseAmountResponse;
+use Transbank\Common\Responses\IncreaseAuthorizationDateResponse;
+use Transbank\Common\Responses\ReversePreAuthorizedAmountResponse;
 use Transbank\Utils\InteractsWithWebpayApi;
+use Transbank\Webpay\Exceptions\DeferredCaptureHistoryException;
+use Transbank\Webpay\Exceptions\IncreaseAmountException;
+use Transbank\Webpay\Exceptions\IncreaseAuthorizationDateException;
+use Transbank\Webpay\Exceptions\ReversePreAuthorizedAmountException;
 use Transbank\Webpay\Exceptions\WebpayRequestException;
 use Transbank\Webpay\Options;
 use Transbank\Webpay\WebpayPlus;
@@ -17,16 +25,6 @@ use Transbank\Webpay\WebpayPlus\Responses\TransactionCommitResponse;
 use Transbank\Webpay\WebpayPlus\Responses\TransactionCreateResponse;
 use Transbank\Webpay\WebpayPlus\Responses\TransactionRefundResponse;
 use Transbank\Webpay\WebpayPlus\Responses\TransactionStatusResponse;
-
-use Transbank\Webpay\Exceptions\DeferredCaptureHistoryException;
-use Transbank\Webpay\Exceptions\IncreaseAmountException;
-use Transbank\Webpay\Exceptions\IncreaseAuthorizationDateException;
-use Transbank\Webpay\Exceptions\ReversePreAuthorizedAmountException;
-
-use Transbank\Common\Responses\IncreaseAmountResponse;
-use Transbank\Common\Responses\DeferredCaptureHistoryResponse;
-use Transbank\Common\Responses\IncreaseAuthorizationDateResponse;
-use Transbank\Common\Responses\ReversePreAuthorizedAmountResponse;
 
 /**
  * Class Transaction.
@@ -184,8 +182,6 @@ class Transaction
         return new TransactionCaptureResponse($response);
     }
 
-
-
     /**
      * @param $token
      * @param $buyOrder
@@ -220,8 +216,6 @@ class Transaction
         return new IncreaseAmountResponse($response);
     }
 
-
-
     /**
      * @param $token
      * @param $buyOrder
@@ -253,9 +247,6 @@ class Transaction
 
         return new IncreaseAuthorizationDateResponse($response);
     }
-
-
-
 
     /**
      * @param $token
@@ -291,9 +282,6 @@ class Transaction
         return new ReversePreAuthorizedAmountResponse($response);
     }
 
-
-
-
     /**
      * @param $token
      * @param $buyOrder
@@ -323,8 +311,6 @@ class Transaction
 
         return new DeferredCaptureHistoryResponse($response);
     }
-
-
 
     /**
      * Get the default options if none are given.

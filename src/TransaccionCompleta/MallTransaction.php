@@ -8,6 +8,10 @@
 
 namespace Transbank\TransaccionCompleta;
 
+use Transbank\Common\Responses\MallDeferredCaptureHistoryResponse;
+use Transbank\Common\Responses\MallIncreaseAmountResponse;
+use Transbank\Common\Responses\MallIncreaseAuthorizationDateResponse;
+use Transbank\Common\Responses\MallReversePreAuthorizedAmountResponse;
 use Transbank\TransaccionCompleta\Exceptions\MallTransactionCaptureException;
 use Transbank\TransaccionCompleta\Exceptions\MallTransactionCommitException;
 use Transbank\TransaccionCompleta\Exceptions\MallTransactionCreateException;
@@ -20,19 +24,12 @@ use Transbank\TransaccionCompleta\Responses\MallTransactionInstallmentsResponse;
 use Transbank\TransaccionCompleta\Responses\MallTransactionRefundResponse;
 use Transbank\TransaccionCompleta\Responses\MallTransactionStatusResponse;
 use Transbank\Utils\InteractsWithWebpayApi;
-use Transbank\Webpay\Exceptions\WebpayRequestException;
-use Transbank\Webpay\Options;
-
-
 use Transbank\Webpay\Exceptions\MallDeferredCaptureHistoryException;
 use Transbank\Webpay\Exceptions\MallIncreaseAmountException;
 use Transbank\Webpay\Exceptions\MallIncreaseAuthorizationDateException;
 use Transbank\Webpay\Exceptions\MallReversePreAuthorizedAmountException;
-
-use Transbank\Common\Responses\MallIncreaseAmountResponse;
-use Transbank\Common\Responses\MallDeferredCaptureHistoryResponse;
-use Transbank\Common\Responses\MallIncreaseAuthorizationDateResponse;
-use Transbank\Common\Responses\MallReversePreAuthorizedAmountResponse;
+use Transbank\Webpay\Exceptions\WebpayRequestException;
+use Transbank\Webpay\Options;
 
 class MallTransaction
 {
@@ -187,12 +184,6 @@ class MallTransaction
         return new Responses\MallTransactionCaptureResponse($response);
     }
 
-
-
-
-
-
-
     /**
      * @param $token
      * @param $buyOrder
@@ -227,8 +218,6 @@ class MallTransaction
         return new MallIncreaseAmountResponse($response);
     }
 
-
-
     /**
      * @param $token
      * @param $buyOrder
@@ -260,9 +249,6 @@ class MallTransaction
 
         return new MallIncreaseAuthorizationDateResponse($response);
     }
-
-
-
 
     /**
      * @param $token
@@ -298,9 +284,6 @@ class MallTransaction
         return new MallReversePreAuthorizedAmountResponse($response);
     }
 
-
-
-
     /**
      * @param $token
      * @param $buyOrder
@@ -330,13 +313,6 @@ class MallTransaction
 
         return new MallDeferredCaptureHistoryResponse($response);
     }
-
-
-
-
-
-
-
 
     public static function getDefaultOptions()
     {

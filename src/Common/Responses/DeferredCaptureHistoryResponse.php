@@ -4,8 +4,7 @@ namespace Transbank\Common\Responses;
 
 use Transbank\Utils\Utils;
 
-
-class DeferredCaptureHistoryResponse 
+class DeferredCaptureHistoryResponse
 {
     public $type;
     public $amount;
@@ -33,5 +32,3 @@ class DeferredCaptureHistoryResponse
         $this->setResponseCode($responseCode);
     }
 }
-
-

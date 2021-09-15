@@ -4,8 +4,7 @@ namespace Transbank\Common\Responses;
 
 use Transbank\Utils\Utils;
 
-
-class MallIncreaseAmountResponse 
+class MallIncreaseAmountResponse
 {
     public $authorizationCode;
     public $authorizationDate;

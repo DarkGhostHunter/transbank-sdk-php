@@ -4,8 +4,7 @@ namespace Transbank\Common\Responses;
 
 use Transbank\Utils\Utils;
 
-
-class IncreaseAuthorizationDateResponse 
+class IncreaseAuthorizationDateResponse
 {
     public $authorizationCode;
     public $authorizationDate;

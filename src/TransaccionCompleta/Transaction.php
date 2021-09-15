@@ -2,6 +2,10 @@
 
 namespace Transbank\TransaccionCompleta;
 
+use Transbank\Common\Responses\DeferredCaptureHistoryResponse;
+use Transbank\Common\Responses\IncreaseAmountResponse;
+use Transbank\Common\Responses\IncreaseAuthorizationDateResponse;
+use Transbank\Common\Responses\ReversePreAuthorizedAmountResponse;
 use Transbank\TransaccionCompleta\Exceptions\TransactionCaptureException;
 use Transbank\TransaccionCompleta\Exceptions\TransactionCommitException;
 use Transbank\TransaccionCompleta\Exceptions\TransactionCreateException;
@@ -13,19 +17,12 @@ use Transbank\TransaccionCompleta\Responses\TransactionCreateResponse;
 use Transbank\TransaccionCompleta\Responses\TransactionInstallmentsResponse;
 use Transbank\TransaccionCompleta\Responses\TransactionRefundResponse;
 use Transbank\Utils\InteractsWithWebpayApi;
-use Transbank\Webpay\Exceptions\WebpayRequestException;
-use Transbank\Webpay\Options;
-
-
 use Transbank\Webpay\Exceptions\DeferredCaptureHistoryException;
 use Transbank\Webpay\Exceptions\IncreaseAmountException;
 use Transbank\Webpay\Exceptions\IncreaseAuthorizationDateException;
 use Transbank\Webpay\Exceptions\ReversePreAuthorizedAmountException;
-
-use Transbank\Common\Responses\IncreaseAmountResponse;
-use Transbank\Common\Responses\DeferredCaptureHistoryResponse;
-use Transbank\Common\Responses\IncreaseAuthorizationDateResponse;
-use Transbank\Common\Responses\ReversePreAuthorizedAmountResponse;
+use Transbank\Webpay\Exceptions\WebpayRequestException;
+use Transbank\Webpay\Options;
 
 /**
  * Class Transaction.
@@ -40,7 +37,6 @@ class Transaction
     const ENDPOINT_REFUND = 'rswebpaytransaction/api/webpay/v1.2/transactions/{token}/refunds';
     const ENDPOINT_STATUS = 'rswebpaytransaction/api/webpay/v1.2/transactions/{token}';
     const ENDPOINT_CAPTURE = 'rswebpaytransaction/api/webpay/v1.2/transactions/{token}/capture';
-
 
     const ENDPOINT_INCREASE_AMOUNT = 'rswebpaytransaction/api/webpay/v1.3/transactions/{token}/amount';
     const ENDPOINT_INCREASE_AUTHORIZATION_DATE = 'rswebpaytransaction/api/webpay/v1.3/transactions/{token}/authorization_date';
@@ -225,13 +221,6 @@ class Transaction
         return new Responses\TransactionCaptureResponse($response);
     }
 
-
-
-
-
-
-
-
     /**
      * @param $token
      * @param $buyOrder
@@ -266,8 +255,6 @@ class Transaction
         return new IncreaseAmountResponse($response);
     }
 
-
-
     /**
      * @param $token
      * @param $buyOrder
@@ -299,9 +286,6 @@ class Transaction
 
         return new IncreaseAuthorizationDateResponse($response);
     }
-
-
-
 
     /**
      * @param $token
@@ -337,9 +321,6 @@ class Transaction
         return new ReversePreAuthorizedAmountResponse($response);
     }
 
-
-
-
     /**
      * @param $token
      * @param $buyOrder
@@ -369,11 +350,6 @@ class Transaction
 
         return new DeferredCaptureHistoryResponse($response);
     }
-
-
-
-
-
 
     /**
      * Get the default options if none are given.

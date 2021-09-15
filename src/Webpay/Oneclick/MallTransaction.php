@@ -2,7 +2,15 @@
 
 namespace Transbank\Webpay\Oneclick;
 
+use Transbank\Common\Responses\MallDeferredCaptureHistoryResponse;
+use Transbank\Common\Responses\MallIncreaseAmountResponse;
+use Transbank\Common\Responses\MallIncreaseAuthorizationDateResponse;
+use Transbank\Common\Responses\MallReversePreAuthorizedAmountResponse;
 use Transbank\Utils\InteractsWithWebpayApi;
+use Transbank\Webpay\Exceptions\MallDeferredCaptureHistoryException;
+use Transbank\Webpay\Exceptions\MallIncreaseAmountException;
+use Transbank\Webpay\Exceptions\MallIncreaseAuthorizationDateException;
+use Transbank\Webpay\Exceptions\MallReversePreAuthorizedAmountException;
 use Transbank\Webpay\Exceptions\WebpayRequestException;
 use Transbank\Webpay\Oneclick;
 use Transbank\Webpay\Oneclick\Exceptions\MallRefundTransactionException;
@@ -15,17 +23,6 @@ use Transbank\Webpay\Oneclick\Responses\MallTransactionRefundResponse;
 use Transbank\Webpay\Oneclick\Responses\MallTransactionStatusResponse;
 use Transbank\Webpay\Options;
 
-
-use Transbank\Webpay\Exceptions\MallDeferredCaptureHistoryException;
-use Transbank\Webpay\Exceptions\MallIncreaseAmountException;
-use Transbank\Webpay\Exceptions\MallIncreaseAuthorizationDateException;
-use Transbank\Webpay\Exceptions\MallReversePreAuthorizedAmountException;
-
-use Transbank\Common\Responses\MallIncreaseAmountResponse;
-use Transbank\Common\Responses\MallDeferredCaptureHistoryResponse;
-use Transbank\Common\Responses\MallIncreaseAuthorizationDateResponse;
-use Transbank\Common\Responses\MallReversePreAuthorizedAmountResponse;
-
 class MallTransaction
 {
     use InteractsWithWebpayApi;
@@ -33,7 +30,6 @@ class MallTransaction
     const TRANSACTION_STATUS_ENDPOINT = 'rswebpaytransaction/api/oneclick/v1.2/transactions/{buy_order}';
     const TRANSACTION_REFUND_ENDPOINT = 'rswebpaytransaction/api/oneclick/v1.2/transactions/{buy_order}/refunds';
     const TRANSACTION_CAPTURE_ENDPOINT = 'rswebpaytransaction/api/oneclick/v1.2/transactions/capture';
-
 
     const ENDPOINT_INCREASE_AMOUNT = 'rswebpaytransaction/api/webpay/v1.3/transactions/{token}/amount';
     const ENDPOINT_INCREASE_AUTHORIZATION_DATE = 'rswebpaytransaction/api/webpay/v1.3/transactions/{token}/authorization_date';
@@ -124,12 +120,6 @@ class MallTransaction
         return new MallTransactionRefundResponse($response);
     }
 
-
-
-
-
-
-
     /**
      * @param $token
      * @param $buyOrder
@@ -164,8 +154,6 @@ class MallTransaction
         return new MallIncreaseAmountResponse($response);
     }
 
-
-
     /**
      * @param $token
      * @param $buyOrder
@@ -197,9 +185,6 @@ class MallTransaction
 
         return new MallIncreaseAuthorizationDateResponse($response);
     }
-
-
-
 
     /**
      * @param $token
@@ -235,9 +220,6 @@ class MallTransaction
         return new MallReversePreAuthorizedAmountResponse($response);
     }
 
-
-
-
     /**
      * @param $token
      * @param $buyOrder
@@ -267,11 +249,6 @@ class MallTransaction
 
         return new MallDeferredCaptureHistoryResponse($response);
     }
-
-
-
-
-
 
     public static function getDefaultOptions()
     {

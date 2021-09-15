@@ -4,8 +4,7 @@ namespace Transbank\Common\Responses;
 
 use Transbank\Utils\Utils;
 
-
-class MallDeferredCaptureHistoryResponse 
+class MallDeferredCaptureHistoryResponse
 {
     public $type;
     public $amount;
